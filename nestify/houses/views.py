@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions
 from .models import HouseListing
 from .serializers import HouseListingSerializer
+from .serializers import UserSerializer
 from users.models import User
 from rest_framework.response import Response
 
