@@ -4,6 +4,16 @@ from .serializers import HouseListingSerializer
 from .serializers import UserSerializer
 from users.models import User
 from rest_framework.response import Response
+from .permissions import IsOwnerOrAdmin  # Import the custom permission
+
+class UserHouseListView(generics.ListAPIView):
+    serializer_class = HouseListingSerializer
+    permission_classes = [IsOwnerOrAdmin]
+
+    def get_queryset(self):
+        user_id = self.kwargs['id']
+        return HouseListing.objects.filter(listed_by=user_id)
+
 
 class HouseListingList(generics.ListCreateAPIView):
     queryset = HouseListing.objects.all()
@@ -52,3 +62,5 @@ class AdminStatisticsView(generics.GenericAPIView):
             'houses_for_sale': houses_for_sale,
             'total_users': total_users,
         })
+    
+
