@@ -12,4 +12,9 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
+        # Ensures that the current user is returned
         return self.request.user
+
+    def perform_update(self, serializer):
+        # Saves the updated user data
+        serializer.save()
