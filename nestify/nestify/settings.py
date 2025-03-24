@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'nestify',
         'USER': 'root',
         'HOST': 'localhost',
-        'PASSWORD': '',
+        'PASSWORD': 'MySQL@123',
         'PORT': '3306'
     }
 }
