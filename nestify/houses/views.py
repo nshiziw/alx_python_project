@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions
+from rest_framework.exceptions import PermissionDenied
 from .models import HouseListing
 from .serializers import HouseListingSerializer
 from .serializers import UserSerializer
@@ -11,7 +12,7 @@ class UserHouseListView(generics.ListAPIView):
     permission_classes = [IsOwnerOrAdmin]
 
     def get_queryset(self):
-        user_id = self.kwargs['id']
+        user_id = self.kwargs['user_id']
         return HouseListing.objects.filter(listed_by=user_id)
 
 
