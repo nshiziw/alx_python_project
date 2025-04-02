@@ -7,3 +7,5 @@ class User(AbstractUser):
         ('admin', 'Admin'),
     )
     usertype = models.CharField(max_length=20, choices=USER_TYPE_CHOICES, default='property_owner')
+    is_banned = models.BooleanField(default=False)
+    ban_expiry = models.DateTimeField(null=True, blank=True)

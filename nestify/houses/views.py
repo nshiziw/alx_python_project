@@ -49,6 +49,39 @@ class AdminUserDetailView(generics.RetrieveDestroyAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAdminUser]
 
+    def put(self, request, *args, **kwargs):
+        user = self.get_object()
+        ban_duration = request.data.get('ban_duration')  # Duration in days
+        
+        if ban_duration is None:
+            return Response(
+                {'error': 'ban_duration is required'}, 
+                status=400
+            )
+            
+        try:
+            ban_duration = int(ban_duration)
+            if ban_duration <= 0:
+                return Response(
+                    {'error': 'ban_duration must be positive'}, 
+                    status=400
+                )
+        except ValueError:
+            return Response(
+                {'error': 'ban_duration must be a valid number'}, 
+                status=400
+            )
+            
+        from datetime import datetime, timedelta
+        user.is_banned = True
+        user.ban_expiry = datetime.now() + timedelta(days=ban_duration)
+        user.save()
+        
+        return Response({
+            'message': f'User banned for {ban_duration} days',
+            'ban_expiry': user.ban_expiry
+        })
+
 class AdminStatisticsView(generics.GenericAPIView):
     permission_classes = [permissions.IsAdminUser]
 
