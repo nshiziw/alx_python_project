@@ -7,19 +7,22 @@ Nestify is a web-based platform where users can browse houses available for sale
 ## Features
 
 ### Client Users
+
 - Browse houses available for sale or rent without logging in.
 - View details of a single house.
 
 ### Property Owners
+
 - Register and log in.
 - Create, update, and delete house listings.
 - View and update their profile information.
 
 ### Admin Users
+
 - View all property owners and their listings.
-- View platform statistics (total houses, houses for rent, houses for sale, total users).
+- View platform statistics (total houses, houses for rent, houses for sale, total users, total banned users).
 - Delete property owners or house listings.
-- Ban property owners for a period of time.
+- Ban property owners for a period of time (in days).
 
 ---
 
@@ -35,6 +38,7 @@ Nestify is a web-based platform where users can browse houses available for sale
 ## Installation
 
 ### Prerequisites
+
 - Python 3.x
 - MySQL
 - Pip (Python package manager)
@@ -42,6 +46,8 @@ Nestify is a web-based platform where users can browse houses available for sale
 ### Steps
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/your-username/nestify.git
    cd nestify
+   ```
