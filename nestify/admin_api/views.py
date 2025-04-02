@@ -16,11 +16,13 @@ class AdminStatisticsView(generics.GenericAPIView):
         houses_for_rent = HouseListing.objects.filter(status='rent').count()
         houses_for_sale = HouseListing.objects.filter(status='sell').count()
         total_users = User.objects.count()
+        banned_users = User.objects.filter(is_banned=True).count()
         return Response({
             'total_houses': total_houses,
             'houses_for_rent': houses_for_rent,
             'houses_for_sale': houses_for_sale,
             'total_users': total_users,
+            'banned_users': banned_users,
         })
 
 class AdminUserListView(generics.ListAPIView):
@@ -32,6 +34,12 @@ class AdminUserDetailView(generics.RetrieveDestroyAPIView):
     queryset = User.objects.filter(usertype='property_owner')
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAdminUser]
+
+    def get(self, request, *args, **kwargs):
+        user = self.get_object()
+        houses = HouseListing.objects.filter(listed_by=user)
+        serializer = HouseListingSerializer(houses, many=True)
+        return Response(serializer.data)
 
     def put(self, request, *args, **kwargs):
         user = self.get_object()

@@ -25,3 +25,8 @@ urlpatterns = [
     path('api/houses/', include('houses.urls')),
     path('api/admin/', include('admin_api.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# nshizi
+# nshizi@gmail.com
+# Nshizi@123
