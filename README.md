@@ -48,6 +48,6 @@ Nestify is a web-based platform where users can browse houses available for sale
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/nestify.git
+   git clone https://github.com/nshiziw/nestify.git
    cd nestify
    ```
