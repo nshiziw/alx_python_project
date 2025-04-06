@@ -26,6 +26,44 @@ Nestify is a web-based platform where users can browse houses available for sale
 
 ---
 
+## API Endpoints
+
+### Authentication Endpoints
+
+- `POST /api/auth/register/` - Register a new user
+- `POST /api/auth/login/` - Login and get JWT tokens
+- `GET /api/auth/me/` - Get current user profile
+- `PUT /api/auth/me/` - Update current user profile
+
+### House Listing Endpoints
+
+- `GET /api/houses/` - List all houses
+- `POST /api/houses/` - Create a new house listing
+- `GET /api/houses/<int:pk>/` - Get house details
+- `PUT /api/houses/<int:pk>/` - Update house details
+- `DELETE /api/houses/<int:pk>/` - Delete a house listing
+- `GET /api/houses/user/<int:user_id>/` - Get houses listed by a specific user
+
+### Admin Endpoints
+
+- `GET /api/admin/statistics/` - Get platform statistics
+- `GET /api/admin/users/` - List all users
+- `GET /api/admin/users/<int:pk>/listings/` - Get user's listings
+- `PUT /api/admin/users/<int:pk>/ban/` - Ban a user
+- `DELETE /api/admin/users/<int:pk>/delete/` - Delete a user
+
+---
+
+## Admin Credentials
+
+Default admin credentials for testing:
+
+- Username: `nshizi`
+- Email: `nshizi@gmail.com`
+- Password: `Nshizi@123`
+
+---
+
 ## Technologies Used
 
 - **Backend**: Django (with Django REST Framework)
