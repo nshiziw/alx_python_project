@@ -86,6 +86,6 @@ Default admin credentials for testing:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/nshiziw/nestify.git
+   git clone https://github.com/nshiziw/alx_python_project.git
    cd nestify
    ```
